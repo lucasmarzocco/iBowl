@@ -14,8 +14,11 @@ class StatsViewController: ViewController {
     var average = 0
     var scores: [Int] = []
     var date: String = ""
+    var threeGameSeriesInt = 0
+    var fiveGameSeriesInt = 0
+    var highGame = 0
     
-    var ref = FIRDatabase.database().referenceFromURL("https://project-8644039570270742781.firebaseio.com/")
+    var ref = FIRDatabase.database().referenceFromURL("https://ibowl-c7e9e.firebaseio.com/")
     
     @IBOutlet weak var averageScore: UILabel!
     @IBOutlet weak var threeGameSeries: UILabel!
@@ -28,22 +31,25 @@ class StatsViewController: ViewController {
         
         gameCount.text = "Game count: \(scores.count)"
         averageScore.text = "Average is: \(average)"
-        threeGameSeries.text = findGameSeries(3)
-        fiveGameSeries.text = findGameSeries(5)
-        bestAverage.text = "Best Average: Fill in here"
-        bestSeries.text = "Best Series (3/5): 100/50"
+        threeGameSeries.text = "3 game series is: " + String(findGameSeries(3))
+        fiveGameSeries.text = "5 game series is: " + String(findGameSeries(5))
+        bestAverage.text = "Best Average: "
+        bestSeries.text = "Best Series (3/5): "
+        
+        threeGameSeriesInt = findGameSeries(3)
+        fiveGameSeriesInt = findGameSeries(5)
         
         self.sendAlert("Submitted!", message: "Your scores for \(date) have been submitted!")
-        
         self.sendToFirebase()
     }
     
     func sendToFirebase() {
         
-        print(ref.description())
-        print(ref.database)
-        
-        ref.setValue(scores)
+        ref.child(date).child("scores").setValue(scores)
+        ref.child(date).child("average").setValue(average)
+        ref.child(date).child("3gameSeries").setValue(threeGameSeriesInt)
+        ref.child(date).child("5gameSeries").setValue(fiveGameSeriesInt)
+        ref.child(date).child("highGame").setValue(highGame)
         
     }
     
@@ -58,7 +64,7 @@ class StatsViewController: ViewController {
         }
     }
     
-    func findGameSeries(gameCount: Int) -> String {
+    func findGameSeries(gameCount: Int) -> Int {
         
         var series: [Int] = []
         var max: Int = 0
@@ -83,6 +89,10 @@ class StatsViewController: ViewController {
                 }
             }
             
+            if(count == 0) {
+                highGame = max
+            }
+            
             series.append(max)
             count = count + 1
             scores[index] = scores[index] * -1
@@ -99,7 +109,7 @@ class StatsViewController: ViewController {
         
         resetGames()
         
-        return "\(gameCount) game series: \(total)"
+        return total
     }
     
     //Alert function that shows pop up alerts to the user

@@ -14,7 +14,7 @@
 		01455CD21D152EA500A58378 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01455CD01D152EA500A58378 /* LaunchScreen.storyboard */; };
 		01455CDA1D153A7300A58378 /* NewScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01455CD91D153A7300A58378 /* NewScoreViewController.swift */; };
 		014782471D24E37F00D4397D /* PastScoresController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014782461D24E37F00D4397D /* PastScoresController.swift */; };
-		018FAFB21D42E465004E71A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 018FAFB11D42E465004E71A1 /* GoogleService-Info.plist */; };
+		014B70231D74F6190049129E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 014B70221D74F6190049129E /* GoogleService-Info.plist */; };
 		01A53D1B1D1B0BAA00B2C000 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A53D1A1D1B0BAA00B2C000 /* StatsViewController.swift */; };
 		B661212F318A46029C00BCDA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D1736645E707FA18C96451 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -26,10 +26,9 @@
 		01455CCC1D152EA500A58378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01455CCE1D152EA500A58378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01455CD11D152EA500A58378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		01455CD31D152EA500A58378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01455CD91D153A7300A58378 /* NewScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScoreViewController.swift; sourceTree = "<group>"; };
 		014782461D24E37F00D4397D /* PastScoresController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastScoresController.swift; sourceTree = "<group>"; };
-		018FAFB11D42E465004E71A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		014B70221D74F6190049129E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01A53D1A1D1B0BAA00B2C000 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		03D99FFCFF1BC80CA1F66CB8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		418511EB817D487E5C47BEEB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		01455CC61D152EA500A58378 /* iBowl */ = {
 			isa = PBXGroup;
 			children = (
+				014B70221D74F6190049129E /* GoogleService-Info.plist */,
 				01455CC71D152EA500A58378 /* AppDelegate.swift */,
 				01455CC91D152EA500A58378 /* ViewController.swift */,
 				01455CCB1D152EA500A58378 /* Main.storyboard */,
@@ -77,8 +77,6 @@
 				01455CD91D153A7300A58378 /* NewScoreViewController.swift */,
 				01455CCE1D152EA500A58378 /* Assets.xcassets */,
 				01455CD01D152EA500A58378 /* LaunchScreen.storyboard */,
-				018FAFB11D42E465004E71A1 /* GoogleService-Info.plist */,
-				01455CD31D152EA500A58378 /* Info.plist */,
 			);
 			path = iBowl;
 			sourceTree = "<group>";
@@ -163,7 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01455CD21D152EA500A58378 /* LaunchScreen.storyboard in Resources */,
-				018FAFB21D42E465004E71A1 /* GoogleService-Info.plist in Resources */,
+				014B70231D74F6190049129E /* GoogleService-Info.plist in Resources */,
 				01455CCF1D152EA500A58378 /* Assets.xcassets in Resources */,
 				01455CCD1D152EA500A58378 /* Main.storyboard in Resources */,
 			);
@@ -345,7 +343,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iBowl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lucasmarzocco.iBowl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibowl.io;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -358,7 +356,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iBowl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lucasmarzocco.iBowl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibowl.io;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

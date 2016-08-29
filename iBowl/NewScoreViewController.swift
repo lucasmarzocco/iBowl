@@ -33,7 +33,7 @@ class NewScoreViewController: UIViewController {
         let month = components.month
         let day = components.day
         
-        info = String(month) + "/" + String(day) + "/" + String(year)
+        info = String(month) + "-" + String(day) + "-" + String(year)
         self.date.text = "Today is: " + info
         
     }
@@ -106,8 +106,6 @@ class NewScoreViewController: UIViewController {
     }
     
     @IBAction func submitScores(sender: AnyObject) {
-        
-
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -24,6 +24,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase
+  - Firebase/Core
   - Firebase/Database
 
 SPEC CHECKSUMS:
