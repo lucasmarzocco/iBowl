@@ -11,31 +11,51 @@ import Firebase
 
 class PastScoresController: UITableViewController {
     
-    var ref = FIRDatabase.database().referenceFromURL("https://ibowl-c7e9e.firebaseio.com")
+    var ref = FIRDatabase.database().referenceFromURL("https://ibowl-c7e9e.firebaseio.com/")
     
-    //var scores: [String] = ["6/7/2016", "6/10/2016", "6/14/2016", "6/27/2016"]
-    //var wow: [String] = ["Average: 202 - High game: 220", "Average: 206 - High game: 300", "Average: 210 - High game: 200", "Average: 202 - High game: 189" ]
-    
+    var data: [String : AnyObject] = [:]
     var dates: [String] = []
+    var averages: [Int] = []
+    var highGames: [Int] = []
+    var strings: [String] = []
     
     override func viewDidLoad() {
         
         ref.observeEventType(.Value, withBlock: { snapshot in
             
-            let postDict = snapshot.value as! [String : AnyObject]
-            
-            for item in postDict.keys {
-                print(item)
-                
-                self.dates.append(item)
-            }
+            self.data = snapshot.value as! [String : AnyObject]
+            self.addToList()
         })
+    }
+    
+    func addToList() {
         
-        print(self.dates)
+        for item in data.keys {
+            
+            self.dates.append(item)
+            let db = data[item]
+            
+            let avg = db!["average"] as! Int
+            let hg = db!["highGame"] as! Int
+            
+            self.averages.append(avg)
+            self.highGames.append(hg)
+        }
+        
+        self.formCells()
+        tableView.reloadData()
+    }
+    
+    func formCells() {
+        
+        for (index, element) in averages.enumerate() {
+            
+            let string = "Average: " + String(element) + " - High game: " + String(highGames[index])
+            strings.append(string)
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
     }
     
     
@@ -44,14 +64,10 @@ class PastScoresController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cellIdentifier = "cell"
         let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)! as UITableViewCell
         cell.textLabel?.text = String(self.dates[indexPath.row])
-        cell.detailTextLabel!.text = String(self.dates[indexPath.row])
+        cell.detailTextLabel!.text = String(self.strings[indexPath.row])
         return cell
     }
-    
-    
-
 }
