@@ -33,10 +33,16 @@ class PastScoresController: UITableViewController {
     
     func addToList() {
         
-        for item in data.keys {
+        let df = NSDateFormatter()
+        df.dateFormat = "MM-dd-yyyy"
+        
+        let myArrayOfTuples = data.sort{ df.dateFromString($0.0)!.compare(df.dateFromString($1.0)!) == .OrderedAscending}
+        
+        for item in myArrayOfTuples {
             
-            self.dates.append(item)
-            let db = data[item]
+            self.dates.append(item.0)
+            
+            let db = data[item.0]
             
             if let avg = db!["average"] {
                 
@@ -65,6 +71,8 @@ class PastScoresController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        self.sendAlert("Coming Soon!", message: "Functionality is coming soon!")
     }
     
     
@@ -78,5 +86,13 @@ class PastScoresController: UITableViewController {
         cell.textLabel?.text = String(self.dates[indexPath.row])
         cell.detailTextLabel!.text = String(self.strings[indexPath.row])
         return cell
+    }
+    
+    //Alert function that shows pop up alerts to the user
+    func sendAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
