@@ -15,16 +15,19 @@ class PastScoresController: UITableViewController {
     
     var data: [String : AnyObject] = [:]
     var dates: [String] = []
-    var averages: [Int] = []
-    var highGames: [Int] = []
+    var averages: [AnyObject] = []
+    var highGames: [AnyObject] = []
     var strings: [String] = []
     
     override func viewDidLoad() {
         
         ref.observeEventType(.Value, withBlock: { snapshot in
             
-            self.data = snapshot.value as! [String : AnyObject]
-            self.addToList()
+            if(snapshot.exists()) {
+                
+                self.data = snapshot.value as! [String : AnyObject]
+                self.addToList()
+            }
         })
     }
     
@@ -35,11 +38,17 @@ class PastScoresController: UITableViewController {
             self.dates.append(item)
             let db = data[item]
             
-            let avg = db!["average"] as! Int
-            let hg = db!["highGame"] as! Int
-            
-            self.averages.append(avg)
-            self.highGames.append(hg)
+            if let avg = db!["average"] {
+                
+                if let hg = db!["highGame"] {
+                    
+                    if(avg != nil && hg != nil) {
+                        
+                        self.averages.append(avg!)
+                        self.highGames.append(hg!)
+                    }
+                }
+            }
         }
         
         self.formCells()

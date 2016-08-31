@@ -10,15 +10,14 @@ import UIKit
 import Firebase
 
 class NewScoreViewController: UIViewController {
-    
-    // 6/12/2016: 150 233 160 207 195 236 235 (7)
-    // 6/16/2016: 269 176 244 176 204 215 196 189 236 213 (10)
 
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var wordField1: UITextField?
     var wordField2: UITextField?
+    var wordField3: UITextField?
+    
     var scores: [Int] = []
     var info: String = ""
     var average: Int = 0
@@ -61,6 +60,25 @@ class NewScoreViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func changeDate(sender: AnyObject) {
+        
+        let alert = UIAlertController(title: "Submit previous date", message: "Enter new date", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addTextFieldWithConfigurationHandler ({ (textField: UITextField!) in
+            textField.placeholder = "Ex: 5-15-2010"
+            self.wordField3 = textField })
+        
+        alert.addAction(UIAlertAction(title: "Change", style: UIAlertActionStyle.Default, handler: changeToPastDate))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func changeToPastDate(alert: UIAlertAction!) {
+        
+        info = (self.wordField3?.text)!
+        self.date.text = "Entering games for: " + info
+    }
+    
     
     func gamesEntered(alert: UIAlertAction!) {
         

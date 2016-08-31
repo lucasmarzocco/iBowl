@@ -181,7 +181,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TjY-3D-mrh">
-                                <rect key="frame" x="97" y="69" width="220" height="92"/>
+                                <rect key="frame" x="20" y="69" width="374" height="92"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -234,6 +234,16 @@
                                 <connections>
                                     <action selector="calculateScores:" destination="ucl-GH-TKy" eventType="touchUpInside" id="PjO-NN-ML2"/>
                                     <segue destination="oM4-AM-wyL" kind="show" id="tQm-kN-Wgh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eK6-DM-aZ6">
+                                <rect key="frame" x="97" y="645" width="240" height="49"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Missed a Day?">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeDate:" destination="ucl-GH-TKy" eventType="touchUpInside" id="gFv-Ti-3i0"/>
                                 </connections>
                             </button>
                         </subviews>
