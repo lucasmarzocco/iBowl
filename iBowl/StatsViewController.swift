@@ -33,18 +33,7 @@ class StatsViewController: ViewController {
     
     override func viewDidLoad() {
         
-        gameCount.text = "Game count: \(scores.count)"
-        averageScore.text = "Average is: \(average)"
-        threeGameSeries.text = "3 game series is: " + String(findGameSeries(3))
-        fiveGameSeries.text = "5 game series is: " + String(findGameSeries(5))
-        
         self.setUpData()
-        
-        threeGameSeriesInt = findGameSeries(3)
-        fiveGameSeriesInt = findGameSeries(5)
-        
-        self.sendAlert("Submitted!", message: "Your scores for \(date) have been submitted!")
-        self.sendToFirebase()
     }
     
     func setUpData() {
@@ -83,8 +72,41 @@ class StatsViewController: ViewController {
                 }
             }
             
-            bestAverage.text = "Best Average: " + String(self.findBestAverage())
-            bestSeries.text = "Best Series (3/5): " + String(self.findBestSeries(3)) + "/" + String(self.findBestSeries(5))
+            threeGameSeriesInt = findGameSeries(3)
+            fiveGameSeriesInt = findGameSeries(5)
+            
+            let findBestAverage = self.findBestAverage()
+            let findBestThreeSeries = self.findBestSeries(3)
+            let findBestFiveSeries = self.findBestSeries(5)
+            
+            gameCount.text = "Game count: \(scores.count)"
+            averageScore.text = "Average is: \(average)"
+            threeGameSeries.text = "3 game series is: " + String(threeGameSeriesInt)
+            fiveGameSeries.text = "5 game series is: " + String(fiveGameSeriesInt)
+            
+            bestAverage.text = "Best Average: " + String(findBestAverage)
+            bestSeries.text = "Best Series (3/5): " + String(findBestThreeSeries) + "/" + String(findBestFiveSeries)
+            
+            let bool1 = average > findBestAverage
+            let bool2 = threeGameSeriesInt > findBestThreeSeries
+            let bool3 = fiveGameSeriesInt > findBestFiveSeries
+            
+            if(bool1 && bool2 && bool3) {
+                self.sendAlert("Congrats!", message: "New high average and series!")
+            }
+            else if(bool2 || bool3) {
+                self.sendAlert("Congrats!", message: "New high series!")
+                
+            }
+            else if(bool1) {
+                self.sendAlert("Congrats!", message: "New high average!")
+            }
+            
+            else {
+                self.sendAlert("Submitted!", message: "Your scores for \(date) have been submitted!")
+            }
+            
+            self.sendToFirebase()
         }
     }
     
