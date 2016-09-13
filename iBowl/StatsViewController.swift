@@ -22,7 +22,7 @@ class StatsViewController: ViewController {
     var stored3Series: [AnyObject] = []
     var stored5Series: [AnyObject] = []
     
-    var ref = FIRDatabase.database().referenceFromURL("https://ibowl-c7e9e.firebaseio.com/")
+    var ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
     
     @IBOutlet weak var averageScore: UILabel!
     @IBOutlet weak var threeGameSeries: UILabel!
@@ -40,7 +40,7 @@ class StatsViewController: ViewController {
         
         print("Setting up data...")
         
-        ref.observeSingleEventOfType(.Value, withBlock: { snapshot in
+        ref.observeSingleEvent(of: .value, with: { snapshot in
             
             if(snapshot.exists()) {
                 self.db = snapshot.value as! [String : AnyObject]
@@ -64,9 +64,9 @@ class StatsViewController: ViewController {
                         
                         if(avg != nil && threeGame != nil && fiveGame != nil) {
                         
-                            self.storedAverages.append(avg!)
-                            self.stored3Series.append(threeGame!)
-                            self.stored5Series.append(fiveGame!)
+                            self.storedAverages.append(avg! as AnyObject)
+                            self.stored3Series.append(threeGame! as AnyObject)
+                            self.stored5Series.append(fiveGame! as AnyObject)
                         }
                     }
                 }
@@ -125,7 +125,7 @@ class StatsViewController: ViewController {
     }
     
     
-    func findBestSeries(gameNum: Int) -> Int {
+    func findBestSeries(_ gameNum: Int) -> Int {
         
         var seriesPicker: [AnyObject] = []
         var bestSeries = 0
@@ -160,14 +160,14 @@ class StatsViewController: ViewController {
         
         for score in scores {
             if(score < 0) {
-                let index = scores.indexOf(score)!
+                let index = scores.index(of: score)!
                 scores[index] = scores[index] * -1
                 
             }
         }
     }
     
-    func findGameSeries(gameCount: Int) -> Int {
+    func findGameSeries(_ gameCount: Int) -> Int {
         
         var series: [Int] = []
         var max: Int = 0
@@ -188,7 +188,7 @@ class StatsViewController: ViewController {
             
                 if(score > max) {
                     max = score
-                    index = scores.indexOf(max)!
+                    index = scores.index(of: max)!
                 }
             }
             
@@ -216,10 +216,10 @@ class StatsViewController: ViewController {
     }
     
     //Alert function that shows pop up alerts to the user
-    func sendAlert(title: String, message: String) {
+    func sendAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
