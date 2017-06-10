@@ -108,13 +108,19 @@
                             <outlet property="delegate" destination="wkh-my-HtY" id="6Le-jW-JUS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Past Scores" id="u2l-6K-dqd"/>
+                    <navigationItem key="navigationItem" title="Past Scores" id="u2l-6K-dqd">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="s5y-Ff-qoz">
+                            <connections>
+                                <segue destination="c3Q-Oo-NZo" kind="showDetail" id="Nhg-Bd-mCx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqw-dV-p5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1078" y="1263"/>
         </scene>
-        <!--Stats View Controller-->
+        <!--Scores-->
         <scene sceneID="w1l-0z-4rN">
             <objects>
                 <viewController id="oM4-AM-wyL" customClass="StatsViewController" customModule="iBowl" customModuleProvider="target" sceneMemberID="viewController">
@@ -171,6 +177,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Scores" id="sx1-Yq-jzM">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="wgO-vq-8do">
+                            <connections>
+                                <segue destination="c3Q-Oo-NZo" kind="showDetail" id="cH8-zR-gpe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="averageScore" destination="ISx-LQ-3C4" id="16i-3m-68L"/>
                         <outlet property="bestAverage" destination="kqz-eY-K0J" id="8GT-wV-A0n"/>
@@ -182,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNe-BY-j65" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1599" y="2156"/>
+            <point key="canvasLocation" x="-270" y="1222"/>
         </scene>
         <!--Add Game-->
         <scene sceneID="NfT-cT-ZU9">
@@ -219,7 +232,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="RK4-Vt-JnG">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="RK4-Vt-JnG">
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RK4-Vt-JnG" id="wZo-jR-TIi">
@@ -295,7 +308,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQh-ed-A7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1599" y="1263"/>
+            <point key="canvasLocation" x="1598.5507246376812" y="1262.771739130435"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jff-kg-CkU">
@@ -316,4 +329,7 @@
             <point key="canvasLocation" x="570" y="344"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Nhg-Bd-mCx"/>
+    </inferredMetricsTieBreakers>
 </document>

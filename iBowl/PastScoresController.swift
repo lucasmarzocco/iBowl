@@ -19,12 +19,12 @@ class PastScoresController: UITableViewController {
     var highGames: [AnyObject] = []
     var strings: [String] = []
     var games: [NSNumber] = []
-    var flag: integer_t = 0
-    
     var type: String = ""
     var lanePattern: String = ""
     
     override func viewDidLoad() {
+        
+        self.navigationItem.setHidesBackButton(true, animated:true);
         
         ref.observe(.value, with: { snapshot in
             
@@ -40,22 +40,17 @@ class PastScoresController: UITableViewController {
         
         let df = DateFormatter()
         df.dateFormat = "MM-dd-yyyy"
-        
-        //fix this because of new additions to database and how it's structured!
-        let myArrayOfTuples = data.sorted{ df.date(from: $0.0)!.compare(df.date(from: $1.0)!) == .orderedAscending}
+
+        let myArrayOfTuples = data.sorted{df.date(from: $0.0)!.compare(df.date(from: $1.0)!) == .orderedAscending}
         
         for item in myArrayOfTuples {
             
             self.dates.append(item.0)
-            
             let db = data[item.0]
             
             if let avg = db!["average"] {
-                
                 if let hg = db!["highGame"] {
-                    
                     if(avg != nil && hg != nil) {
-                        
                         self.averages.append(avg! as AnyObject)
                         self.highGames.append(hg! as AnyObject)
                     }
@@ -81,6 +76,28 @@ class PastScoresController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         let date = cell?.textLabel?.text ?? "01-01-2017"
         let url = "https://ibowl-c7e9e.firebaseio.com/" + date + "/scores"
+        let url1 = "https://ibowl-c7e9e.firebaseio.com/" + date
+        
+        var classification = ""
+        var lanePattern = ""
+        
+        let ref1 = FIRDatabase.database().reference(fromURL: url1)
+        
+        ref1.child("classification").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String {
+                classification = item
+            }
+        })
+        
+        ref1.child("pattern").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String {
+                lanePattern = item
+            }
+        })
+        
+        
         let ref = FIRDatabase.database().reference(fromURL: url)
         
         _ = ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -101,10 +118,9 @@ class PastScoresController: UITableViewController {
             }
             
             let message = "Your " + String(vars.scores.count) + " games were: "
-            self.sendAlert("League/Casual", message: message + scoreString)
+            self.sendAlert(classification + ": " + lanePattern, message: message + scoreString)
             
         })
-
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -116,7 +132,9 @@ class PastScoresController: UITableViewController {
         let cellIdentifier = "cell"
         let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)! as UITableViewCell
         
-        if((indexPath as NSIndexPath).row < self.dates.count) {
+        cell.selectionStyle = .none
+        
+        if((indexPath as NSIndexPath).row < self.dates.count) && self.strings.count > 0 {
             cell.textLabel?.text = String(self.dates[(indexPath as NSIndexPath).row])
             cell.detailTextLabel!.text = String(self.strings[(indexPath as NSIndexPath).row])
         }

@@ -22,8 +22,8 @@ class StatsViewController: ViewController {
     var stored3Series: [AnyObject] = []
     var stored5Series: [AnyObject] = []
     
-    var type: String = ""
-    var lanePattern: String = ""
+    var type: String = "Casual"
+    var lanePattern: String = "House Shot"
     
     var ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
     
@@ -36,12 +36,11 @@ class StatsViewController: ViewController {
     
     override func viewDidLoad() {
         
+        self.navigationItem.setHidesBackButton(true, animated:true);
         self.setUpData()
     }
     
     func setUpData() {
-        
-        print("Setting up data...")
         
         ref.observeSingleEvent(of: .value, with: { snapshot in
             
@@ -91,25 +90,14 @@ class StatsViewController: ViewController {
             bestSeries.text = "Best Series (3/5): " + String(findBestThreeSeries) + "/" + String(findBestFiveSeries)
             
             let bool1 = average > findBestAverage
-            let bool2 = threeGameSeriesInt > findBestThreeSeries
-            let bool3 = fiveGameSeriesInt > findBestFiveSeries
             
-            if(bool1 && bool2 && bool3) {
-                //self.sendAlert("Congrats!", message: "New high average and series!")
+            if(bool1) {
+                self.sendAlert("Congrats!", message: "New high average!")
             }
-            else if(bool2 || bool3) {
-                //self.sendAlert("Congrats!", message: "New high series!")
-                
-            }
-            else if(bool1) {
-                //self.sendAlert("Congrats!", message: "New high average!")
-            }
-            
             else {
                 self.sendAlert("Submitted!", message: "Your scores for \(date) have been submitted!")
             }
-            
-            print ("WOOOOT!")
+
             self.sendToFirebase()
         }
     }

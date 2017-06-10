@@ -152,8 +152,18 @@ class NewScoreViewController: UIViewController {
         dest.average = self.average
         dest.scores = self.scores
         dest.date = self.info
-        dest.type = self.type.text!
-        dest.lanePattern = self.lanePattern.text!
+        if(self.type.text! == "") {
+            dest.type = "Casual"
+        }
+        else {
+            dest.type = self.type.text!
+        }
+        if(self.lanePattern.text! == "") {
+            dest.lanePattern = "House Shot"
+        }
+        else {
+            dest.lanePattern = self.lanePattern.text!
+        }
         
     }
 }
