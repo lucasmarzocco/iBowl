@@ -15,6 +15,7 @@
 		01455CDA1D153A7300A58378 /* NewScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01455CD91D153A7300A58378 /* NewScoreViewController.swift */; };
 		014782471D24E37F00D4397D /* PastScoresController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014782461D24E37F00D4397D /* PastScoresController.swift */; };
 		014B70231D74F6190049129E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 014B70221D74F6190049129E /* GoogleService-Info.plist */; };
+		015744821EEB863700B4F994 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015744811EEB863700B4F994 /* Score.swift */; };
 		01A53D1B1D1B0BAA00B2C000 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A53D1A1D1B0BAA00B2C000 /* StatsViewController.swift */; };
 		B661212F318A46029C00BCDA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D1736645E707FA18C96451 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,7 @@
 		01455CD91D153A7300A58378 /* NewScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScoreViewController.swift; sourceTree = "<group>"; };
 		014782461D24E37F00D4397D /* PastScoresController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastScoresController.swift; sourceTree = "<group>"; };
 		014B70221D74F6190049129E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		015744811EEB863700B4F994 /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		01A53D1A1D1B0BAA00B2C000 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		03D99FFCFF1BC80CA1F66CB8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		418511EB817D487E5C47BEEB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				01455CD91D153A7300A58378 /* NewScoreViewController.swift */,
 				01455CCE1D152EA500A58378 /* Assets.xcassets */,
 				01455CD01D152EA500A58378 /* LaunchScreen.storyboard */,
+				015744811EEB863700B4F994 /* Score.swift */,
 			);
 			path = iBowl;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				014782471D24E37F00D4397D /* PastScoresController.swift in Sources */,
 				01455CCA1D152EA500A58378 /* ViewController.swift in Sources */,
 				01A53D1B1D1B0BAA00B2C000 /* StatsViewController.swift in Sources */,
+				015744821EEB863700B4F994 /* Score.swift in Sources */,
 				01455CC81D152EA500A58378 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

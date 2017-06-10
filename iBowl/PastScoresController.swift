@@ -18,6 +18,11 @@ class PastScoresController: UITableViewController {
     var averages: [AnyObject] = []
     var highGames: [AnyObject] = []
     var strings: [String] = []
+    var games: [NSNumber] = []
+    var flag: integer_t = 0
+    
+    var type: String = ""
+    var lanePattern: String = ""
     
     override func viewDidLoad() {
         
@@ -36,6 +41,7 @@ class PastScoresController: UITableViewController {
         let df = DateFormatter()
         df.dateFormat = "MM-dd-yyyy"
         
+        //fix this because of new additions to database and how it's structured!
         let myArrayOfTuples = data.sorted{ df.date(from: $0.0)!.compare(df.date(from: $1.0)!) == .orderedAscending}
         
         for item in myArrayOfTuples {
@@ -65,8 +71,6 @@ class PastScoresController: UITableViewController {
         
         for (index, element) in averages.enumerated() {
             
-            //let string = "Average: " + (element as! String) + " - High game: " + (highGames[index] as! String)
-            
             let string = "Average: \(element) - High game: \(highGames[index])"
             strings.append(string)
         }
@@ -74,10 +78,37 @@ class PastScoresController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.sendAlert("Coming Soon!", message: "Functionality is coming soon!")
+        let cell = tableView.cellForRow(at: indexPath)
+        let date = cell?.textLabel?.text ?? "01-01-2017"
+        let url = "https://ibowl-c7e9e.firebaseio.com/" + date + "/scores"
+        let ref = FIRDatabase.database().reference(fromURL: url)
+        
+        _ = ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let vars = Scores(snapshot: snapshot)
+            
+            var scoreString = ""
+            var index = 1
+            
+            for val in vars.scores {
+                scoreString += String(describing: val)
+                
+                if(index < vars.scores.count) {
+                    scoreString += ", "
+                }
+                
+                index += 1
+                
+            }
+            
+            let message = "Your " + String(vars.scores.count) + " games were: "
+            self.sendAlert("League/Casual", message: message + scoreString)
+            
+        })
+
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return self.dates.count
     }
     

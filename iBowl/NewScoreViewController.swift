@@ -18,6 +18,9 @@ class NewScoreViewController: UIViewController {
     var wordField2: UITextField?
     var wordField3: UITextField?
     
+    @IBOutlet weak var type: UITextField!
+    @IBOutlet weak var lanePattern: UITextField!
+    
     var scores: [Int] = []
     var info: String = ""
     var average: Int = 0
@@ -149,5 +152,8 @@ class NewScoreViewController: UIViewController {
         dest.average = self.average
         dest.scores = self.scores
         dest.date = self.info
+        dest.type = self.type.text!
+        dest.lanePattern = self.lanePattern.text!
+        
     }
 }

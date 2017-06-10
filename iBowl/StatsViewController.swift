@@ -22,6 +22,9 @@ class StatsViewController: ViewController {
     var stored3Series: [AnyObject] = []
     var stored5Series: [AnyObject] = []
     
+    var type: String = ""
+    var lanePattern: String = ""
+    
     var ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
     
     @IBOutlet weak var averageScore: UILabel!
@@ -92,20 +95,21 @@ class StatsViewController: ViewController {
             let bool3 = fiveGameSeriesInt > findBestFiveSeries
             
             if(bool1 && bool2 && bool3) {
-                self.sendAlert("Congrats!", message: "New high average and series!")
+                //self.sendAlert("Congrats!", message: "New high average and series!")
             }
             else if(bool2 || bool3) {
-                self.sendAlert("Congrats!", message: "New high series!")
+                //self.sendAlert("Congrats!", message: "New high series!")
                 
             }
             else if(bool1) {
-                self.sendAlert("Congrats!", message: "New high average!")
+                //self.sendAlert("Congrats!", message: "New high average!")
             }
             
             else {
                 self.sendAlert("Submitted!", message: "Your scores for \(date) have been submitted!")
             }
             
+            print ("WOOOOT!")
             self.sendToFirebase()
         }
     }
@@ -154,6 +158,8 @@ class StatsViewController: ViewController {
         ref.child(date).child("3gameSeries").setValue(threeGameSeriesInt)
         ref.child(date).child("5gameSeries").setValue(fiveGameSeriesInt)
         ref.child(date).child("highGame").setValue(highGame)
+        ref.child(date).child("classification").setValue(type)
+        ref.child(date).child("pattern").setValue(lanePattern)
     }
     
     func resetGames() {
@@ -211,7 +217,6 @@ class StatsViewController: ViewController {
         }
         
         resetGames()
-        
         return total
     }
     
