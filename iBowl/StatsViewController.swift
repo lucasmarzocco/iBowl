@@ -11,28 +11,30 @@ import Firebase
 
 class StatsViewController: ViewController {
     
+    var ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
+    
     var average = 0
     var scores: [Int] = []
     var date: String = ""
     var threeGameSeriesInt = 0
-    var fiveGameSeriesInt = 0
     var highGame = 0
+    var runningAvg = 0
     var db: [String: AnyObject] = [:]
-    var storedAverages: [AnyObject] = []
-    var stored3Series: [AnyObject] = []
-    var stored5Series: [AnyObject] = []
-    
+    var storedCasualAverages: [AnyObject] = []
+    var storedLeagueAverages: [AnyObject] = []
+    var storedCasual3Series: [AnyObject] = []
+    var storedLeague3Series: [AnyObject] = []
     var type: String = "Casual"
     var lanePattern: String = "House Shot"
     
-    var ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
-    
-    @IBOutlet weak var averageScore: UILabel!
-    @IBOutlet weak var threeGameSeries: UILabel!
-    @IBOutlet weak var fiveGameSeries: UILabel!
-    @IBOutlet weak var bestAverage: UILabel!
-    @IBOutlet weak var bestSeries: UILabel!
-    @IBOutlet weak var gameCount: UILabel!
+    @IBOutlet weak var today_average: UILabel!
+    @IBOutlet weak var today_series: UILabel!
+    @IBOutlet weak var best_average_league: UILabel!
+    @IBOutlet weak var best_average_casual: UILabel!
+    @IBOutlet weak var best_series_league: UILabel!
+    @IBOutlet weak var running_avg_casual: UILabel!
+    @IBOutlet weak var best_series_casual: UILabel!
+    @IBOutlet weak var running_avg_league: UILabel!
     
     override func viewDidLoad() {
         
@@ -58,55 +60,61 @@ class StatsViewController: ViewController {
             
             let data = db[item]
             
-            if let avg = data!["average"] {
-                
-                if let threeGame = data!["3gameSeries"] {
-                    
-                    if let fiveGame = data!["5gameSeries"] {
-                        
-                        if(avg != nil && threeGame != nil && fiveGame != nil) {
-                        
-                            self.storedAverages.append(avg! as AnyObject)
-                            self.stored3Series.append(threeGame! as AnyObject)
-                            self.stored5Series.append(fiveGame! as AnyObject)
-                        }
-                    }
-                }
-            }
+            let avg = data!["average"]
+            let threeGame = data!["3gameSeries"]
             
-            threeGameSeriesInt = findGameSeries(3)
-            fiveGameSeriesInt = findGameSeries(5)
-            
-            let findBestAverage = self.findBestAverage()
-            let findBestThreeSeries = self.findBestSeries(3)
-            let findBestFiveSeries = self.findBestSeries(5)
-            
-            gameCount.text = "Game count: \(scores.count)"
-            averageScore.text = "Average is: \(average)"
-            threeGameSeries.text = "3 game series is: " + String(threeGameSeriesInt)
-            fiveGameSeries.text = "5 game series is: " + String(fiveGameSeriesInt)
-            
-            bestAverage.text = "Best Average: " + String(findBestAverage)
-            bestSeries.text = "Best Series (3/5): " + String(findBestThreeSeries) + "/" + String(findBestFiveSeries)
-            
-            let bool1 = average > findBestAverage
-            
-            if(bool1) {
-                self.sendAlert("Congrats!", message: "New high average!")
+            if (data!["classification"] as! String) == "League" {
+                self.storedLeagueAverages.append(avg! as AnyObject)
+                self.storedLeague3Series.append(threeGame! as AnyObject)
             }
             else {
-                self.sendAlert("Submitted!", message: "Your scores for \(date) have been submitted!")
+                self.storedCasualAverages.append(avg! as AnyObject)
+                self.storedCasual3Series.append(threeGame! as AnyObject)
             }
-
-            self.sendToFirebase()
         }
+    
+        threeGameSeriesInt = findGameSeries(3)
+        
+        let findBestLeagueAverage = self.findBestAverage(list: storedLeagueAverages)
+        let findBestCasualAverage = self.findBestAverage(list: storedCasualAverages)
+        let findBestLeagueThreeSeries = self.findBestSeries(series: storedLeague3Series)
+        let findBestCasualThreeSeries = self.findBestSeries(series: storedCasual3Series)
+        let runningLeagueAvg = self.findRunningAverage(list: storedLeagueAverages)
+        let runningCasualAvg = self.findRunningAverage(list: storedCasualAverages)
+        
+        today_average.text = "Today's Average is: \(average)"
+        today_series.text = "Today's series is: " + String(threeGameSeriesInt)
+        best_average_league.text = "Best Average (League): " + String(findBestLeagueAverage)
+        best_average_casual.text = "Best Average (Casual): " + String(findBestCasualAverage)
+        best_series_league.text = "Best Series (League): " + String(findBestLeagueThreeSeries)
+        best_series_casual.text = "Best Series (Casual): " + String(findBestCasualThreeSeries)
+        running_avg_league.text = "Running Avg (League): " + String(runningLeagueAvg)
+        running_avg_casual.text = "Running Avg (Casual): " + String(runningCasualAvg)
+        
+        self.sendAlert("Submitted!", message: "Your scores for \(date) have been submitted!")
+        self.sendToFirebase()
     }
     
-    func findBestAverage() -> Int {
+    func findRunningAverage(list: [AnyObject]) -> Int {
+        
+        var value = 0
+        var count = 0
+        
+        for avg in list {
+            
+            value += (avg as! Int)
+            count += 1
+        }
+        
+        return (value/count)
+        
+    }
+    
+    func findBestAverage(list: [AnyObject]) -> Int {
         
         var bestAvg = 0
         
-        for item in storedAverages {
+        for item in list {
             
             if(item as! Int > bestAvg) {
                 bestAvg = Int(item as! NSNumber)
@@ -117,19 +125,11 @@ class StatsViewController: ViewController {
     }
     
     
-    func findBestSeries(_ gameNum: Int) -> Int {
+    func findBestSeries(series: [AnyObject]) -> Int {
         
-        var seriesPicker: [AnyObject] = []
         var bestSeries = 0
         
-        if(gameNum == 3) {
-            seriesPicker = stored3Series
-        }
-        else {
-            seriesPicker = stored5Series
-        }
-        
-        for item in seriesPicker {
+        for item in series {
             
             if item as! Int > bestSeries {
                 bestSeries = Int(item as! NSNumber)
@@ -137,17 +137,6 @@ class StatsViewController: ViewController {
         }
         
         return bestSeries
-    }
-    
-    func sendToFirebase() {
-        
-        ref.child(date).child("scores").setValue(scores)
-        ref.child(date).child("average").setValue(average)
-        ref.child(date).child("3gameSeries").setValue(threeGameSeriesInt)
-        ref.child(date).child("5gameSeries").setValue(fiveGameSeriesInt)
-        ref.child(date).child("highGame").setValue(highGame)
-        ref.child(date).child("classification").setValue(type)
-        ref.child(date).child("pattern").setValue(lanePattern)
     }
     
     func resetGames() {
@@ -208,7 +197,16 @@ class StatsViewController: ViewController {
         return total
     }
     
-    //Alert function that shows pop up alerts to the user
+    func sendToFirebase() {
+        
+        ref.child(date).child("scores").setValue(scores)
+        ref.child(date).child("average").setValue(average)
+        ref.child(date).child("3gameSeries").setValue(threeGameSeriesInt)
+        ref.child(date).child("highGame").setValue(highGame)
+        ref.child(date).child("classification").setValue(type)
+        ref.child(date).child("pattern").setValue(lanePattern)
+    }
+    
     func sendAlert(_ title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)

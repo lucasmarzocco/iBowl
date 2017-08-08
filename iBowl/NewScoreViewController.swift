@@ -27,6 +27,10 @@ class NewScoreViewController: UIViewController {
     
     override func viewDidLoad() {
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewScoreViewController.dismissKeyboard))
+
+        view.addGestureRecognizer(tap)
+        
         let date = Date()
         let calendar = NSCalendar.current
         let components = (calendar as NSCalendar).components([.year, .month, .day], from: date)
@@ -39,6 +43,11 @@ class NewScoreViewController: UIViewController {
         self.date.text = "Today is: " + info
         
     }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     
     @IBAction func addMultipleGames(_ sender: AnyObject) {
         
@@ -81,7 +90,6 @@ class NewScoreViewController: UIViewController {
         info = (self.wordField3?.text)!
         self.date.text = "Entering games for: " + info
     }
-    
     
     func gamesEntered(_ alert: UIAlertAction!) {
         
@@ -127,6 +135,7 @@ class NewScoreViewController: UIViewController {
     }
     
     @IBAction func submitScores(_ sender: AnyObject) {
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
@@ -144,7 +153,6 @@ class NewScoreViewController: UIViewController {
         cell.textLabel?.text = String(self.scores[(indexPath as NSIndexPath).row])
         return cell
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
