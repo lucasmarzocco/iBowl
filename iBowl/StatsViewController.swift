@@ -106,6 +106,9 @@ class StatsViewController: ViewController {
             count += 1
         }
         
+        if count == 0 {
+            return 0
+        }
         return (value/count)
         
     }
