@@ -19,8 +19,6 @@ class PastScoresController: UITableViewController {
     var highGames: [AnyObject] = []
     var strings: [String] = []
     var games: [NSNumber] = []
-    var type: String = ""
-    var lanePattern: String = ""
     
     override func viewDidLoad() {
         self.navigationItem.setHidesBackButton(true, animated:true);

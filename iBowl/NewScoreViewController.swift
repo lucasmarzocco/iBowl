@@ -160,13 +160,13 @@ class NewScoreViewController: UIViewController {
         dest.scores = self.scores
         dest.date = self.info
         if(self.type.text! == "") {
-            dest.type = "Casual"
+            dest.type = "League"
         }
         else {
             dest.type = self.type.text!
         }
         if(self.lanePattern.text! == "") {
-            dest.lanePattern = "House Shot"
+            dest.lanePattern = "House"
         }
         else {
             dest.lanePattern = self.lanePattern.text!

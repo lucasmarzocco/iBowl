@@ -23,8 +23,8 @@ class StatsViewController: ViewController {
     var storedLeagueAverages: [AnyObject] = []
     var storedCasual3Series: [AnyObject] = []
     var storedLeague3Series: [AnyObject] = []
-    var type: String = "WTF IS THIS"
-    var lanePattern: String = "TEST"
+    var type: String = "League"
+    var lanePattern: String = "House"
     
     @IBOutlet weak var today_average: UILabel!
     @IBOutlet weak var today_series: UILabel!
@@ -51,7 +51,6 @@ class StatsViewController: ViewController {
             }
         })
     }
-    
     
     func addToList() {
         
