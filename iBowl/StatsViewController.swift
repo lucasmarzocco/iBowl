@@ -23,8 +23,8 @@ class StatsViewController: ViewController {
     var storedLeagueAverages: [AnyObject] = []
     var storedCasual3Series: [AnyObject] = []
     var storedLeague3Series: [AnyObject] = []
-    var type: String = "League"
-    var lanePattern: String = "House"
+    var type: String = "WTF IS THIS"
+    var lanePattern: String = "TEST"
     
     @IBOutlet weak var today_average: UILabel!
     @IBOutlet weak var today_series: UILabel!
@@ -36,9 +36,6 @@ class StatsViewController: ViewController {
     @IBOutlet weak var running_avg_league: UILabel!
     
     override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        FIRApp.configure()
         ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
         self.navigationItem.setHidesBackButton(true, animated:true);
         self.setUpData()
@@ -109,14 +106,9 @@ class StatsViewController: ViewController {
         }
         
         if count == 0 {
-<<<<<<< HEAD
             count = 1
         }
         
-=======
-            return 0
-        }
->>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
         return (value/count)
         
     }

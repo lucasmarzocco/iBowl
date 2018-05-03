@@ -26,7 +26,6 @@ class NewScoreViewController: UIViewController {
     var average: Int = 0
     
     override func viewDidLoad() {
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewScoreViewController.dismissKeyboard))
 
         view.addGestureRecognizer(tap)

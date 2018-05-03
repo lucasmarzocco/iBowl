@@ -131,21 +131,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-<<<<<<< HEAD
 				LastUpgradeCheck = 0930;
-=======
-				LastUpgradeCheck = 0910;
->>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
 				ORGANIZATIONNAME = "Lucas Marzocco";
 				TargetAttributes = {
 					01455CC31D152EA500A58378 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = V263AV3VB8;
-<<<<<<< HEAD
 						LastSwiftMigration = 0930;
-=======
-						LastSwiftMigration = 0910;
->>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
 					};
 				};
 			};
@@ -285,10 +277,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-<<<<<<< HEAD
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-=======
->>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -343,10 +331,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-<<<<<<< HEAD
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-=======
->>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

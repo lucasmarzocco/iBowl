@@ -23,10 +23,7 @@ class PastScoresController: UITableViewController {
     var lanePattern: String = ""
     
     override func viewDidLoad() {
-        
-        super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated:true);
-        FIRApp.configure()
         ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
         ref.observe(.value, with: { snapshot in
             
