@@ -120,8 +120,7 @@ class PastScoresController: UITableViewController {
         })
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dates.count
     }
     
@@ -139,7 +138,6 @@ class PastScoresController: UITableViewController {
         return cell
     }
     
-    //Alert function that shows pop up alerts to the user
     func sendAlert(_ title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)

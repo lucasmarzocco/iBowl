@@ -200,7 +200,6 @@ class StatsViewController: ViewController {
     }
     
     func sendToFirebase() {
-        
         ref.child(date).child("scores").setValue(scores)
         ref.child(date).child("average").setValue(average)
         ref.child(date).child("3gameSeries").setValue(threeGameSeriesInt)
@@ -210,7 +209,6 @@ class StatsViewController: ViewController {
     }
     
     func sendAlert(_ title: String, message: String) {
-        
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
