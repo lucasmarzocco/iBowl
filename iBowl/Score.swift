@@ -16,6 +16,11 @@ struct Scores {
     
     init(snapshot: FIRDataSnapshot) {
         
-        scores = snapshot.value as! [NSNumber]
+        if snapshot.value is NSNull {
+            scores = []
+        }
+        else {
+            scores = snapshot.value as! [NSNumber]
+        }
     }
 }

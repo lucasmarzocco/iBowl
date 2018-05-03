@@ -11,8 +11,7 @@ import Firebase
 
 class StatsViewController: ViewController {
     
-    var ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
-    
+    var ref: FIRDatabaseReference!
     var average = 0
     var scores: [Int] = []
     var date: String = ""
@@ -24,8 +23,8 @@ class StatsViewController: ViewController {
     var storedLeagueAverages: [AnyObject] = []
     var storedCasual3Series: [AnyObject] = []
     var storedLeague3Series: [AnyObject] = []
-    var type: String = "Casual"
-    var lanePattern: String = "House Shot"
+    var type: String = "League"
+    var lanePattern: String = "House"
     
     @IBOutlet weak var today_average: UILabel!
     @IBOutlet weak var today_series: UILabel!
@@ -38,6 +37,9 @@ class StatsViewController: ViewController {
     
     override func viewDidLoad() {
         
+        super.viewDidLoad()
+        FIRApp.configure()
+        ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
         self.navigationItem.setHidesBackButton(true, animated:true);
         self.setUpData()
     }
@@ -106,6 +108,10 @@ class StatsViewController: ViewController {
             count += 1
         }
         
+        if count == 0 {
+            count = 1
+        }
+        
         return (value/count)
         
     }
@@ -117,7 +123,7 @@ class StatsViewController: ViewController {
         for item in list {
             
             if(item as! Int > bestAvg) {
-                bestAvg = Int(item as! NSNumber)
+                bestAvg = Int(truncating: item as! NSNumber)
             }
         }
         
@@ -132,7 +138,7 @@ class StatsViewController: ViewController {
         for item in series {
             
             if item as! Int > bestSeries {
-                bestSeries = Int(item as! NSNumber)
+                bestSeries = Int(truncating: item as! NSNumber)
             }
         }
         

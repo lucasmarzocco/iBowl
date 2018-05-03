@@ -44,7 +44,7 @@ class NewScoreViewController: UIViewController {
         
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     

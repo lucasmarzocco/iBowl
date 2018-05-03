@@ -11,7 +11,7 @@ import Firebase
 
 class PastScoresController: UITableViewController {
     
-    var ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
+    var ref: FIRDatabaseReference!
     
     var data: [String : AnyObject] = [:]
     var dates: [String] = []
@@ -24,8 +24,10 @@ class PastScoresController: UITableViewController {
     
     override func viewDidLoad() {
         
+        super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated:true);
-        
+        FIRApp.configure()
+        ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
         ref.observe(.value, with: { snapshot in
             
             if(snapshot.exists()) {
