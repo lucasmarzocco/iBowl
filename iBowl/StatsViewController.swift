@@ -109,9 +109,14 @@ class StatsViewController: ViewController {
         }
         
         if count == 0 {
+<<<<<<< HEAD
             count = 1
         }
         
+=======
+            return 0
+        }
+>>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
         return (value/count)
         
     }

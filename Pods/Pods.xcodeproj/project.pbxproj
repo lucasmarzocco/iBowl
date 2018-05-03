@@ -274,7 +274,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
+<<<<<<< HEAD
 				LastUpgradeCheck = 0930;
+=======
+				LastUpgradeCheck = 0910;
+>>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -309,8 +313,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */;
 			buildSettings = {
+<<<<<<< HEAD
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+=======
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+>>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -349,14 +357,20 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+<<<<<<< HEAD
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+=======
+>>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+<<<<<<< HEAD
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+=======
+>>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -401,14 +415,20 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+<<<<<<< HEAD
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+=======
+>>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+<<<<<<< HEAD
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+=======
+>>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -439,8 +459,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */;
 			buildSettings = {
+<<<<<<< HEAD
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+=======
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+>>>>>>> efccfbd2a001a3ca1f886430b66b0e3107cedafa
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
