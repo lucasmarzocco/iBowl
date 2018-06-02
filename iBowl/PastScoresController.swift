@@ -12,21 +12,23 @@ import Firebase
 class PastScoresController: UITableViewController {
     
     var ref: FIRDatabaseReference!
-    
     var data: [String : AnyObject] = [:]
     var dates: [String] = []
     var averages: [AnyObject] = []
     var highGames: [AnyObject] = []
     var strings: [String] = []
     var games: [NSNumber] = []
+    var league = ""
+    var deviceID = ""
     
     override func viewDidLoad() {
+        print(league)
+        deviceID = UIDevice.current.identifierForVendor!.uuidString
         self.navigationItem.setHidesBackButton(true, animated:true);
-        ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
+        ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league)
         ref.observe(.value, with: { snapshot in
             
             if(snapshot.exists()) {
-                
                 self.data = snapshot.value as! [String : AnyObject]
                 self.addToList()
             }
@@ -72,8 +74,8 @@ class PastScoresController: UITableViewController {
         
         let cell = tableView.cellForRow(at: indexPath)
         let date = cell?.textLabel?.text ?? "01-01-2017"
-        let url = "https://ibowl-c7e9e.firebaseio.com/" + date + "/scores"
-        let url1 = "https://ibowl-c7e9e.firebaseio.com/" + date
+        let url = "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league + "/" + date + "/scores"
+        let url1 = "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league + "/" + date
         
         var classification = ""
         var lanePattern = ""

@@ -21,11 +21,13 @@ class NewScoreViewController: UIViewController {
     @IBOutlet weak var type: UITextField!
     @IBOutlet weak var lanePattern: UITextField!
     
+    var league = ""
     var scores: [Int] = []
     var info: String = ""
     var average: Int = 0
     
     override func viewDidLoad() {
+        print("Editing info for league: " + self.league)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewScoreViewController.dismissKeyboard))
 
         view.addGestureRecognizer(tap)
@@ -40,13 +42,16 @@ class NewScoreViewController: UIViewController {
         
         info =  month! + "-" + day! + "-" + year!
         self.date.text = "Today is: " + info
+        self.type.text = league
         
+        if league == "Casual" {
+            self.lanePattern.text = "House"
+        }
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
     
     @IBAction func addMultipleGames(_ sender: AnyObject) {
         
@@ -142,15 +147,32 @@ class NewScoreViewController: UIViewController {
     }
     
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return scores.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+    @objc func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "cell"
         let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)! as UITableViewCell
         cell.textLabel?.text = String(self.scores[(indexPath as NSIndexPath).row])
         return cell
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if self.type.text! == "" {
+            sendAlert("ERROR", message: "Game type empty!")
+            return false
+        }
+        if self.lanePattern.text! == "" {
+            sendAlert("ERROR", message: "Pattern empty!")
+            return false
+        }
+        if self.scores.count == 0 {
+            sendAlert("ERROR", message: "No scores entered!")
+            return false
+        }
+        
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -159,18 +181,14 @@ class NewScoreViewController: UIViewController {
         dest.average = self.average
         dest.scores = self.scores
         dest.date = self.info
-        if(self.type.text! == "") {
-            dest.type = "League"
-        }
-        else {
-            dest.type = self.type.text!
-        }
-        if(self.lanePattern.text! == "") {
-            dest.lanePattern = "House"
-        }
-        else {
-            dest.lanePattern = self.lanePattern.text!
-        }
-        
+        dest.type = self.type.text!
+        dest.lanePattern = self.lanePattern.text!
+        dest.league = self.league
+    }
+    
+    func sendAlert(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

@@ -3,7 +3,8 @@
 //  iBowl
 //
 //  Created by Lucas Marzocco on 6/18/16.
-//  Copyright © 2016 Lucas Marzocco. All rights reserved.
+//  Copyright © 2016 Lucas Marzocco. All rights reserved.iOWN@MW3
+
 //
 
 import UIKit

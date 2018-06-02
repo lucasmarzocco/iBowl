@@ -12,6 +12,7 @@ import Firebase
 class StatsViewController: ViewController {
     
     var ref: FIRDatabaseReference!
+    var ref1: FIRDatabaseReference!
     var average = 0
     var scores: [Int] = []
     var date: String = ""
@@ -23,8 +24,9 @@ class StatsViewController: ViewController {
     var storedLeagueAverages: [AnyObject] = []
     var storedCasual3Series: [AnyObject] = []
     var storedLeague3Series: [AnyObject] = []
-    var type: String = "League"
-    var lanePattern: String = "House"
+    var type: String = ""
+    var lanePattern: String = ""
+    var league: String = ""
     
     @IBOutlet weak var today_average: UILabel!
     @IBOutlet weak var today_series: UILabel!
@@ -36,28 +38,42 @@ class StatsViewController: ViewController {
     @IBOutlet weak var running_avg_league: UILabel!
     
     override func viewDidLoad() {
+        print(scores)
         ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
         self.navigationItem.setHidesBackButton(true, animated:true);
         self.setUpData()
     }
     
     func setUpData() {
-        
-        ref.observeSingleEvent(of: .value, with: { snapshot in
+        let deviceID = UIDevice.current.identifierForVendor!.uuidString
+        ref1 = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league)
+        ref1.observeSingleEvent(of: .value, with: { snapshot in
             
             if(snapshot.exists()) {
                 self.db = snapshot.value as! [String : AnyObject]
                 self.addToList()
+            }
+            else {
+                print("FIND GAME SERIES HEHEHEHE")
+                self.threeGameSeriesInt = self.findGameSeries(3)
+                print("AFTERRRRRRRRR")
+                self.today_average.text = "Today's Average is: \(self.average)"
+                self.today_series.text = "Today's series is: " + String(self.threeGameSeriesInt)
+                self.sendAlert("Submitted!", message: "Your scores for \(self.date) have been submitted!")
+                self.sendToFirebase()
+                
             }
         })
     }
     
     func addToList() {
         
+        print("ADD TO LIST CALLED!!!!!!!!!!!!!!!!")
+        
+        print(db.keys)
         for item in db.keys {
             
             let data = db[item]
-            
             let avg = data!["average"]
             let threeGame = data!["3gameSeries"]
             
@@ -70,9 +86,8 @@ class StatsViewController: ViewController {
                 self.storedCasual3Series.append(threeGame! as AnyObject)
             }
         }
-    
-        threeGameSeriesInt = findGameSeries(3)
         
+        threeGameSeriesInt = findGameSeries(3)
         let findBestLeagueAverage = self.findBestAverage(list: storedLeagueAverages)
         let findBestCasualAverage = self.findBestAverage(list: storedCasualAverages)
         let findBestLeagueThreeSeries = self.findBestSeries(series: storedLeague3Series)
@@ -94,7 +109,6 @@ class StatsViewController: ViewController {
     }
     
     func findRunningAverage(list: [AnyObject]) -> Int {
-        
         var value = 0
         var count = 0
         
@@ -109,13 +123,10 @@ class StatsViewController: ViewController {
         }
         
         return (value/count)
-        
     }
     
     func findBestAverage(list: [AnyObject]) -> Int {
-        
         var bestAvg = 0
-        
         for item in list {
             
             if(item as! Int > bestAvg) {
@@ -200,12 +211,22 @@ class StatsViewController: ViewController {
     }
     
     func sendToFirebase() {
-        ref.child(date).child("scores").setValue(scores)
-        ref.child(date).child("average").setValue(average)
-        ref.child(date).child("3gameSeries").setValue(threeGameSeriesInt)
-        ref.child(date).child("highGame").setValue(highGame)
-        ref.child(date).child("classification").setValue(type)
-        ref.child(date).child("pattern").setValue(lanePattern)
+        
+        let deviceID = UIDevice.current.identifierForVendor!.uuidString
+        
+        ref.child(deviceID).child(league).child(date).child("scores").setValue(scores)
+        ref.child(deviceID).child(league).child(date).child("average").setValue(average)
+        ref.child(deviceID).child(league).child(date).child("3gameSeries").setValue(threeGameSeriesInt)
+        ref.child(deviceID).child(league).child(date).child("highGame").setValue(highGame)
+        
+        if league != "Casual" {
+            type = "League"
+        }
+        else {
+            type = "Casual"
+        }
+        ref.child(deviceID).child(league).child(date).child("classification").setValue(type)
+        ref.child(deviceID).child(league).child(date).child("pattern").setValue(lanePattern)
     }
     
     func sendAlert(_ title: String, message: String) {
