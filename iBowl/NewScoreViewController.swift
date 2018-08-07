@@ -13,40 +13,23 @@ class NewScoreViewController: UIViewController {
 
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var datePicker: UIDatePicker!
     var wordField1: UITextField?
     var wordField2: UITextField?
     var wordField3: UITextField?
-    
     @IBOutlet weak var type: UITextField!
     @IBOutlet weak var lanePattern: UITextField!
-    
     var league = ""
     var scores: [Int] = []
     var info: String = ""
     var average: Int = 0
     
     override func viewDidLoad() {
+        datePicker.setValue(UIColor.red, forKeyPath: "textColor")
         print("Editing info for league: " + self.league)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewScoreViewController.dismissKeyboard))
-
         view.addGestureRecognizer(tap)
-        
-        let date = Date()
-        let calendar = NSCalendar.current
-        let components = (calendar as NSCalendar).components([.year, .month, .day], from: date)
-        
-        let year =  components.year?.description
-        let month = components.month?.description
-        let day = components.day?.description
-        
-        info =  month! + "-" + day! + "-" + year!
-        self.date.text = "Today is: " + info
         self.type.text = league
-        
-        if league == "Casual" {
-            self.lanePattern.text = "House"
-        }
     }
     
     @objc func dismissKeyboard() {
@@ -77,24 +60,6 @@ class NewScoreViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func changeDate(_ sender: AnyObject) {
-        
-        let alert = UIAlertController(title: "Submit previous date", message: "Enter new date", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addTextField (configurationHandler: { (textField: UITextField!) in
-            textField.placeholder = "Ex: 5-15-2010"
-            self.wordField3 = textField })
-        
-        alert.addAction(UIAlertAction(title: "Change", style: UIAlertActionStyle.default, handler: changeToPastDate))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func changeToPastDate(_ alert: UIAlertAction!) {
-        
-        info = (self.wordField3?.text)!
-        self.date.text = "Entering games for: " + info
-    }
-    
     func gamesEntered(_ alert: UIAlertAction!) {
         
         let scoresEntered = (wordField2?.text)?.components(separatedBy: " ")
@@ -108,9 +73,7 @@ class NewScoreViewController: UIViewController {
     }
     
     func gameEntered(_ alert: UIAlertAction!) {
-        
         let score = Int((wordField1?.text)!)!
-        
         if(checkValidGame(score)) {
             scores.append(score)
             tableView.reloadData()
@@ -128,24 +91,19 @@ class NewScoreViewController: UIViewController {
         }
         
         var totalScore = 0
-        
         for game in scores {
             
             totalScore = totalScore + game
-            
         }
-        
         self.average = totalScore / scores.count
     }
     
     @IBAction func submitScores(_ sender: AnyObject) {
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
     
     @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return scores.count
@@ -176,11 +134,13 @@ class NewScoreViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
         let dest: StatsViewController = segue.destination as! StatsViewController
         dest.average = self.average
         dest.scores = self.scores
-        dest.date = self.info
+        dest.date = dateFormatter.string(from: datePicker.date)
         dest.type = self.type.text!
         dest.lanePattern = self.lanePattern.text!
         dest.league = self.league

@@ -15,6 +15,7 @@ class PastScoresController: UITableViewController {
     var data: [String : AnyObject] = [:]
     var dates: [String] = []
     var averages: [AnyObject] = []
+    var series: [AnyObject] = []
     var highGames: [AnyObject] = []
     var strings: [String] = []
     var games: [NSNumber] = []
@@ -22,10 +23,10 @@ class PastScoresController: UITableViewController {
     var deviceID = ""
     
     override func viewDidLoad() {
-        print(league)
         deviceID = UIDevice.current.identifierForVendor!.uuidString
         self.navigationItem.setHidesBackButton(true, animated:true);
         ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league)
+        
         ref.observe(.value, with: { snapshot in
             
             if(snapshot.exists()) {
@@ -48,10 +49,13 @@ class PastScoresController: UITableViewController {
             let db = data[item.0]
             
             if let avg = db!["average"] {
-                if let hg = db!["highGame"] {
-                    if(avg != nil && hg != nil) {
-                        self.averages.append(avg! as AnyObject)
-                        self.highGames.append(hg! as AnyObject)
+                if let series = db!["3gameSeries"] {
+                    if let hg = db!["highGame"] {
+                        if(avg != nil && series != nil && hg != nil) {
+                            self.averages.append(avg! as AnyObject)
+                            self.series.append(series! as AnyObject)
+                            self.highGames.append(hg! as AnyObject)
+                        }
                     }
                 }
             }
@@ -65,7 +69,7 @@ class PastScoresController: UITableViewController {
         
         for (index, element) in averages.enumerated() {
             
-            let string = "Average: \(element) - High game: \(highGames[index])"
+            let string = "Average: \(element) - Series: \(series[index]) (\(highGames[index]))"
             strings.append(string)
         }
     }
@@ -113,7 +117,6 @@ class PastScoresController: UITableViewController {
                 }
                 
                 index += 1
-                
             }
             
             let message = "Your " + String(vars.scores.count) + " games were: "

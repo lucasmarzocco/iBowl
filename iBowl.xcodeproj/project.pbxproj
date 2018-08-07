@@ -17,6 +17,7 @@
 		014B70231D74F6190049129E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 014B70221D74F6190049129E /* GoogleService-Info.plist */; };
 		015744821EEB863700B4F994 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015744811EEB863700B4F994 /* Score.swift */; };
 		01A53D1B1D1B0BAA00B2C000 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A53D1A1D1B0BAA00B2C000 /* StatsViewController.swift */; };
+		1FB6B36A20C5F17700A3BA1B /* CalculateScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6B36920C5F17600A3BA1B /* CalculateScores.swift */; };
 		B661212F318A46029C00BCDA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D1736645E707FA18C96451 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		015744811EEB863700B4F994 /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		01A53D1A1D1B0BAA00B2C000 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		03D99FFCFF1BC80CA1F66CB8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		1FB6B36920C5F17600A3BA1B /* CalculateScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateScores.swift; sourceTree = "<group>"; };
 		418511EB817D487E5C47BEEB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		54D1736645E707FA18C96451 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,6 +76,7 @@
 				01455CC71D152EA500A58378 /* AppDelegate.swift */,
 				01455CC91D152EA500A58378 /* ViewController.swift */,
 				01455CCB1D152EA500A58378 /* Main.storyboard */,
+				1FB6B36920C5F17600A3BA1B /* CalculateScores.swift */,
 				014782461D24E37F00D4397D /* PastScoresController.swift */,
 				01A53D1A1D1B0BAA00B2C000 /* StatsViewController.swift */,
 				01455CD91D153A7300A58378 /* NewScoreViewController.swift */,
@@ -231,6 +234,7 @@
 				01455CCA1D152EA500A58378 /* ViewController.swift in Sources */,
 				01A53D1B1D1B0BAA00B2C000 /* StatsViewController.swift in Sources */,
 				015744821EEB863700B4F994 /* Score.swift in Sources */,
+				1FB6B36A20C5F17700A3BA1B /* CalculateScores.swift in Sources */,
 				01455CC81D152EA500A58378 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
