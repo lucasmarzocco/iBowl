@@ -17,7 +17,6 @@ class StatsViewController: ViewController {
     var scores: [Int] = []
     var date: String = ""
     var gameSeriesInt = 0
-    var highGame = 0
     var runningAvg = 0
     var db: [String: AnyObject] = [:]
     var storedLeagueAverages: [AnyObject] = []
@@ -112,7 +111,6 @@ class StatsViewController: ViewController {
         return bestAvg
     }
     
-    
     func findBestSeries(series: [AnyObject]) -> Int {
         
         var bestSeries = 0
@@ -127,18 +125,12 @@ class StatsViewController: ViewController {
         return bestSeries
     }
     
-    func resetGames() {
-        
-        for score in scores {
-            if(score < 0) {
-                let index = scores.index(of: score)!
-                scores[index] = scores[index] * -1
-            }
-        }
-    }
-    
     func findGameSeries() -> Int {
         return scores.reduce(0, +)
+    }
+    
+    func findHighGame() -> Int {
+        return scores.max()!
     }
     
     func sendToFirebase() {
@@ -146,7 +138,7 @@ class StatsViewController: ViewController {
         ref.child(deviceID).child(league).child(date).child("scores").setValue(scores)
         ref.child(deviceID).child(league).child(date).child("average").setValue(average)
         ref.child(deviceID).child(league).child(date).child("3gameSeries").setValue(gameSeriesInt)
-        ref.child(deviceID).child(league).child(date).child("highGame").setValue(highGame)
+        ref.child(deviceID).child(league).child(date).child("highGame").setValue(findHighGame())
         ref.child(deviceID).child(league).child(date).child("classification").setValue("League")
         ref.child(deviceID).child(league).child(date).child("pattern").setValue(lanePattern)
     }

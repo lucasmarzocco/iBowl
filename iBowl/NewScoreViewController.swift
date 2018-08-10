@@ -92,7 +92,6 @@ class NewScoreViewController: UIViewController {
         
         var totalScore = 0
         for game in scores {
-            
             totalScore = totalScore + game
         }
         self.average = totalScore / scores.count
