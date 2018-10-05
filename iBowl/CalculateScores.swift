@@ -55,14 +55,14 @@ class CalculateScores: UIViewController {
         var new_game = convert_game(game).components(separatedBy: " ")
         new_game.remove(at: new_game.count - 1)
         
-        if new_game[0] == "" {
+        print(new_game)
+        
+        if new_game.count == 0 || new_game[0] == "" {
             current_score.text = "Current Score: " + String(0)
             max_score.text = "Max Score: " + String(300)
         }
         else {
             let (_, score, frames) = get_game(new_game)
-            
-            print (String(frames) + " FRAMES DOWN!")
             for i in frames..<perfect_game.count {
                 new_game.append(perfect_game[i])
             }
@@ -75,14 +75,16 @@ class CalculateScores: UIViewController {
 
     func convert_game(_ game: UITextField) -> String {
         
+        let allowed_scores = ["1","2","3","4","5","6","7","8","9"]
         var converted_game = ""
         var index = 0
-        
         var scoresEntered = game.text?.components(separatedBy: " ")
         
         for frame in scoresEntered! {
-            
-            if frame == "X" {
+            if frame == "" {
+                continue
+            }
+            else if frame == "X" || frame == "x" {
                 converted_game += "10 "
             }
             else if frame == "/" {
@@ -92,8 +94,14 @@ class CalculateScores: UIViewController {
             else if frame == "-" {
                 converted_game += "0 "
             }
-            else {
+            else if allowed_scores.contains(frame) {
                 converted_game += frame + " "
+            }
+            else {
+                sendAlert("WARNING", message: "You tried inputting an invalid score, please try again...")
+                game.text = ""
+                current_score.text = "Current Score: " + String(0)
+                max_score.text = "Max Score: " + String(300)
             }
             
             index += 1
@@ -138,5 +146,11 @@ class CalculateScores: UIViewController {
             b = Int(game[frame+1])!
         }
         return Int(a) + Int(b)
+    }
+    
+    func sendAlert(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

@@ -1,4 +1,29 @@
 PODS:
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - FacebookCore (0.4.0):
+    - Bolts (~> 1.9)
+    - FBSDKCoreKit (~> 4.36)
+  - FacebookLogin (0.4.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.4)
+    - FBSDKCoreKit (~> 4.36)
+    - FBSDKLoginKit (~> 4.36)
+  - FacebookShare (0.4.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.4)
+    - FBSDKCoreKit (~> 4.36)
+    - FBSDKShareKit (~> 4.36)
+  - FBSDKCoreKit (4.37.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.37.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.37.0):
+    - FBSDKCoreKit (~> 4.37.0)
   - Firebase (3.3.0):
     - Firebase/Core (= 3.3.0)
   - Firebase/Analytics (3.3.0):
@@ -23,11 +48,38 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
 
 DEPENDENCIES:
+  - FacebookCore
+  - FacebookLogin
+  - FacebookShare
   - Firebase
   - Firebase/Core
   - Firebase/Database
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Bolts
+    - FacebookCore
+    - FacebookLogin
+    - FacebookShare
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseDatabase
+    - FirebaseInstanceID
+    - GoogleInterchangeUtilities
+    - GoogleSymbolUtilities
+    - GoogleUtilities
+
 SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  FacebookCore: 770e57cfe250a4de4458b682191c0ff062dee247
+  FacebookLogin: eb0f2251aca835a94d70a5f7e580edc46d1e1603
+  FacebookShare: ec48492ba748f971c6a13661963f7aae38140111
+  FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
+  FBSDKLoginKit: 2f7249686d1e30ce8a5ef5400eedf50b3e3df332
+  FBSDKShareKit: 52e0083222c38e930eb6878007478326599195c3
   Firebase: 6250071f0e2440a5c4c67b8cb6b868f868237ac3
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
   FirebaseDatabase: 59bea2e7dfd81b3b8b2f8e396caf1a52c2ced6f7
@@ -36,4 +88,6 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: cf5eca5d4ef65022876c685f0c2ba74c68f09179
+
+COCOAPODS: 1.5.3

@@ -3,6 +3,11 @@
 # Uncomment this line if you're using Swift
 use_frameworks!
 
-pod 'Firebase'
-pod 'Firebase/Database'
-pod 'Firebase/Core'
+target "iBowl" do
+	pod 'Firebase'
+	pod 'Firebase/Database'
+	pod 'Firebase/Core'
+	pod 'FacebookCore'
+	pod 'FacebookLogin'
+	pod 'FacebookShare'
+end

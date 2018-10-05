@@ -30,6 +30,28 @@ class NewScoreViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewScoreViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         self.type.text = league
+        
+        let deviceID = UIDevice.current.identifierForVendor!.uuidString
+        print(deviceID)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let date = dateFormatter.string(from: datePicker.date)
+        print(league)
+        print(date)
+        print(deviceID)
+        /**let ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league + "/" + date)
+        
+        if ref =! nil {
+        
+            ref.observeSingleEvent(of: .value, with: { snapshot in
+                var db = snapshot.value as! [String : AnyObject]
+            
+                for item in db["scores"] as! Array<AnyObject> {
+                    self.scores.append(Int(item as! NSNumber))
+                }
+                self.tableView.reloadData()
+            })
+        } */
     }
     
     @objc func dismissKeyboard() {

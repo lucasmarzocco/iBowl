@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FacebookShare
 
 class StatsViewController: ViewController {
     
@@ -37,6 +38,20 @@ class StatsViewController: ViewController {
         self.setUpData()
     }
     
+    @IBAction func ShareToFacebook(_ sender: Any) {
+        
+        let content = LinkShareContent(url: URL(string:"https://developers.facebook.com")!)
+        let sharer = GraphSharer(content: content)
+        sharer.failsOnInvalidData = true
+        sharer.completion = { result in
+            // Handle share results
+        }
+        
+        do {
+            try sharer.share()
+        } catch {}
+        
+    }
     func setUpData() {
         let deviceID = UIDevice.current.identifierForVendor!.uuidString
         ref1 = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league)
