@@ -1,0 +1,301 @@
+    "815 Scratch" : {
+      "05-30-2018" : {
+        "3gameSeries" : 432,
+        "average" : 144,
+        "classification" : "League",
+        "highGame" : 190,
+        "pattern" : "Wolf",
+        "scores" : [ 120, 122, 190 ]
+      },
+      "06-13-2018" : {
+        "3gameSeries" : 430,
+        "average" : 143,
+        "classification" : "League",
+        "highGame" : 161,
+        "pattern" : "Wolf",
+        "scores" : [ 134, 135, 161 ]
+      },
+      "06-20-2018" : {
+        "3gameSeries" : 478,
+        "average" : 159,
+        "classification" : "League",
+        "highGame" : 169,
+        "pattern" : "Wolf",
+        "scores" : [ 169, 154, 155 ]
+      },
+      "06-27-2018" : {
+        "3gameSeries" : 545,
+        "average" : 181,
+        "classification" : "League",
+        "highGame" : 223,
+        "pattern" : "Dragon",
+        "scores" : [ 166, 223, 156 ]
+      },
+      "06-6-2018" : {
+        "3gameSeries" : 551,
+        "average" : 183,
+        "classification" : "League",
+        "highGame" : 200,
+        "pattern" : "Wolf",
+        "scores" : [ 163, 188, 200 ]
+      },
+      "07-11-2018" : {
+        "3gameSeries" : 452,
+        "average" : 150,
+        "classification" : "League",
+        "highGame" : 160,
+        "pattern" : "Dragon",
+        "scores" : [ 160, 157, 135 ]
+      },
+      "07-18-2018" : {
+        "3gameSeries" : 505,
+        "average" : 168,
+        "classification" : "League",
+        "highGame" : 173,
+        "pattern" : "Dragon",
+        "scores" : [ 173, 171, 161 ]
+      },
+      "07-25-2018" : {
+        "3gameSeries" : 579,
+        "average" : 193,
+        "classification" : "League",
+        "highGame" : 224,
+        "pattern" : "Dragon",
+        "scores" : [ 190, 224, 165 ]
+      },
+      "08-01-2018" : {
+        "3gameSeries" : 487,
+        "average" : 162,
+        "classification" : "League",
+        "highGame" : 203,
+        "pattern" : "Don Johnson",
+        "scores" : [ 131, 153, 203 ]
+      },
+      "08-08-2018" : {
+        "3gameSeries" : 533,
+        "average" : 177,
+        "classification" : "League",
+        "highGame" : 212,
+        "pattern" : "Don Johnson",
+        "scores" : [ 157, 164, 212 ]
+      },
+      "08-15-2018" : {
+        "3gameSeries" : 466,
+        "average" : 155,
+        "classification" : "League",
+        "highGame" : 157,
+        "pattern" : "Don Johnson",
+        "scores" : [ 157, 153, 156 ]
+      },
+      "08-22-2018" : {
+        "3gameSeries" : 445,
+        "average" : 148,
+        "classification" : "League",
+        "highGame" : 179,
+        "pattern" : "Don Johnson",
+        "scores" : [ 132, 134, 179 ]
+      },
+      "08-29-2018" : {
+        "3gameSeries" : 488,
+        "average" : 162,
+        "classification" : "League",
+        "highGame" : 191,
+        "pattern" : "Sphinx",
+        "scores" : [ 169, 128, 191 ]
+      }
+    },
+
+
+
+
+        "League of Our Own" : {
+      "06-11-2018" : {
+        "3gameSeries" : 556,
+        "average" : 185,
+        "classification" : "League",
+        "highGame" : 198,
+        "pattern" : "House",
+        "scores" : [ 198, 191, 167 ]
+      },
+      "06-18-2018" : {
+        "3gameSeries" : 539,
+        "average" : 179,
+        "classification" : "League",
+        "highGame" : 188,
+        "pattern" : "House",
+        "scores" : [ 180, 171, 188 ]
+      },
+      "06-25-2018" : {
+        "3gameSeries" : 644,
+        "average" : 214,
+        "classification" : "League",
+        "highGame" : 253,
+        "pattern" : "House",
+        "scores" : [ 253, 234, 157 ]
+      },
+      "06-4-2018" : {
+        "3gameSeries" : 541,
+        "average" : 180,
+        "classification" : "League",
+        "highGame" : 187,
+        "pattern" : "House",
+        "scores" : [ 184, 187, 170 ]
+      },
+      "07-09-2018" : {
+        "3gameSeries" : 627,
+        "average" : 209,
+        "classification" : "League",
+        "highGame" : 223,
+        "pattern" : "House",
+        "scores" : [ 217, 223, 187 ]
+      },
+      "07-16-2018" : {
+        "3gameSeries" : 642,
+        "average" : 214,
+        "classification" : "League",
+        "highGame" : 248,
+        "pattern" : "House",
+        "scores" : [ 248, 191, 203 ]
+      },
+      "07-23-2018" : {
+        "3gameSeries" : 560,
+        "average" : 186,
+        "classification" : "League",
+        "highGame" : 199,
+        "pattern" : "House",
+        "scores" : [ 180, 181, 199 ]
+      },
+      "07-30-2018" : {
+        "3gameSeries" : 713,
+        "average" : 237,
+        "classification" : "League",
+        "highGame" : 259,
+        "pattern" : "House",
+        "scores" : [ 259, 209, 245 ]
+      },
+      "08-06-2018" : {
+        "3gameSeries" : 566,
+        "average" : 188,
+        "classification" : "League",
+        "highGame" : 214,
+        "pattern" : "House",
+        "scores" : [ 214, 168, 184 ]
+      },
+      "08-13-2018" : {
+        "3gameSeries" : 585,
+        "average" : 195,
+        "classification" : "League",
+        "highGame" : 250,
+        "pattern" : "House",
+        "scores" : [ 174, 250, 161 ]
+      },
+      "08-20-2018" : {
+        "3gameSeries" : 629,
+        "average" : 209,
+        "classification" : "League",
+        "highGame" : 228,
+        "pattern" : "House",
+        "scores" : [ 228, 205, 196 ]
+      },
+      "08-27-2018" : {
+        "3gameSeries" : 627,
+        "average" : 209,
+        "classification" : "League",
+        "highGame" : 232,
+        "pattern" : "House",
+        "scores" : [ 203, 192, 232 ]
+      }
+    },
+
+
+
+        "Ohana" : {
+      "05-31-2018" : {
+        "3gameSeries" : 535,
+        "average" : 178,
+        "classification" : "League",
+        "highGame" : 202,
+        "pattern" : "House",
+        "scores" : [ 202, 183, 150 ]
+      },
+      "06-14-2018" : {
+        "3gameSeries" : 587,
+        "average" : 195,
+        "classification" : "League",
+        "highGame" : 235,
+        "pattern" : "House",
+        "scores" : [ 193, 235, 159 ]
+      },
+      "06-21-2018" : {
+        "3gameSeries" : 617,
+        "average" : 205,
+        "classification" : "League",
+        "highGame" : 263,
+        "pattern" : "House",
+        "scores" : [ 201, 153, 263 ]
+      },
+      "06-28-2018" : {
+        "3gameSeries" : 616,
+        "average" : 205,
+        "classification" : "League",
+        "highGame" : 224,
+        "pattern" : "House",
+        "scores" : [ 224, 215, 177 ]
+      },
+      "06-7-2018" : {
+        "3gameSeries" : 543,
+        "average" : 181,
+        "classification" : "League",
+        "highGame" : 196,
+        "pattern" : "House",
+        "scores" : [ 158, 196, 189 ]
+      },
+      "07-12-2018" : {
+        "3gameSeries" : 591,
+        "average" : 197,
+        "classification" : "League",
+        "highGame" : 214,
+        "pattern" : "House",
+        "scores" : [ 202, 214, 175 ]
+      },
+      "07-19-2018" : {
+        "3gameSeries" : 651,
+        "average" : 217,
+        "classification" : "League",
+        "highGame" : 258,
+        "pattern" : "House",
+        "scores" : [ 215, 258, 178 ]
+      },
+      "07-26-2018" : {
+        "3gameSeries" : 672,
+        "average" : 224,
+        "classification" : "League",
+        "highGame" : 277,
+        "pattern" : "House",
+        "scores" : [ 277, 206, 189 ]
+      },
+      "08-02-2018" : {
+        "3gameSeries" : 701,
+        "average" : 233,
+        "classification" : "League",
+        "highGame" : 267,
+        "pattern" : "House",
+        "scores" : [ 267, 205, 229 ]
+      },
+      "08-09-2018" : {
+        "3gameSeries" : 620,
+        "average" : 206,
+        "classification" : "League",
+        "highGame" : 234,
+        "pattern" : "House",
+        "scores" : [ 227, 159, 234 ]
+      },
+      "08-16-2018" : {
+        "3gameSeries" : 610,
+        "average" : 203,
+        "classification" : "League",
+        "highGame" : 211,
+        "pattern" : "House",
+        "scores" : [ 193, 206, 211 ]
+      }
+    }

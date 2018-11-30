@@ -9,6 +9,9 @@
 import UIKit
 import Firebase
 import FacebookShare
+import FacebookLogin
+import FacebookCore
+import FBSDKCoreKit
 
 class StatsViewController: ViewController {
     
@@ -36,21 +39,45 @@ class StatsViewController: ViewController {
         ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
         self.navigationItem.setHidesBackButton(true, animated:true);
         self.setUpData()
+        
+        /*var loginButton = LoginButton(readPermissions: [ .publicProfile, .email, .userFriends, .userPosts])
+        loginButton.center = view.center
+        view.addSubview(loginButton) */
+        
     }
     
     @IBAction func ShareToFacebook(_ sender: Any) {
         
-        let content = LinkShareContent(url: URL(string:"https://developers.facebook.com")!)
+       /* let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email"], tokenString: "EAAFL44OUF4MBAOjx6CnWTCZBvbSy6vnOMM5hxEuKaxJMU6FWLIyPYCi26fLwXWrPrDNVD8qrEo5rZBZCd4Uw6j1N0ICYsoZBwKQ4zor1jOCO5xI1BUlcm7gcZC21TlVZB0HYeGg4SZCJaD7ZAGRlaSkfhi3oSBJT9d929GREXT3txMviJu3tF0UewynPr3ZBJIxRNxAcrvTSxDwZDZD", version: nil, httpMethod: "GET")
+        
+        req?.start(completionHandler: {(connection, results, error)  -> Void in
+            
+            print("-------------------------------------------------------------")
+            print(connection)
+            print(results)
+            print(error)
+            print("-------------------------------------------------------------")
+        })
+    
+            
+        let content = LinkShareContent(url: URL(fileURLWithPath: "https://developers.facebook.com"), quote: "HELLO!")
+        //try ShareDialog.show(from: myViewController, content: content)
+        
         let sharer = GraphSharer(content: content)
-        sharer.failsOnInvalidData = true
+    
+        /* sharer.failsOnInvalidData = true
         sharer.completion = { result in
             // Handle share results
-        }
+        } */
         
         do {
+            print("SHARED!!!!!!!!!!!-----------------------------------------------------------------------------")
             try sharer.share()
-        } catch {}
+        } catch (let error) {
+            print(error)
+        }
         
+ */
     }
     func setUpData() {
         let deviceID = UIDevice.current.identifierForVendor!.uuidString
