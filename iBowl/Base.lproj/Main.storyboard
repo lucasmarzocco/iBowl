@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="c3Q-Oo-NZo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="c3Q-Oo-NZo">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -101,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1381.1594202898552" y="342.39130434782612"/>
+            <point key="canvasLocation" x="2304" y="342"/>
         </scene>
         <!--Calculate Scores-->
         <scene sceneID="ocD-gV-nuN">
@@ -161,7 +161,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OCe-wl-dtb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3Fb-Og-N9I" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2173.913043478261" y="341.57608695652175"/>
+            <point key="canvasLocation" x="3293" y="342"/>
         </scene>
         <!--Past Scores-->
         <scene sceneID="u1q-RB-ASG">
@@ -215,7 +215,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqw-dV-p5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1078" y="1263"/>
+            <point key="canvasLocation" x="888" y="1263"/>
         </scene>
         <!--Scores-->
         <scene sceneID="w1l-0z-4rN">
@@ -264,17 +264,6 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wiq-Ma-r6z">
-                                <rect key="frame" x="117" y="566" width="180" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Share to Facebook">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="ShareToFacebook:" destination="oM4-AM-wyL" eventType="touchUpInside" id="iKN-O5-H4v"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -295,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNe-BY-j65" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410.14492753623193" y="990.48913043478274"/>
+            <point key="canvasLocation" x="-1522" y="763"/>
         </scene>
         <!--Add Game-->
         <scene sceneID="NfT-cT-ZU9">
@@ -413,7 +402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQh-ed-A7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1598.5507246376812" y="1262.771739130435"/>
+            <point key="canvasLocation" x="1680" y="1263"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jff-kg-CkU">
@@ -431,10 +420,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8yI-gp-e7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="570" y="344"/>
+            <point key="canvasLocation" x="-55" y="-178"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cH8-zR-gpe"/>
+        <segue reference="Nhg-Bd-mCx"/>
     </inferredMetricsTieBreakers>
 </document>
