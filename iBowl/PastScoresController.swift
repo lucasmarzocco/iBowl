@@ -21,11 +21,11 @@ class PastScoresController: UITableViewController {
     var games: [NSNumber] = []
     var league = ""
     var deviceID = ""
+    var lort: String = ""
     
     override func viewDidLoad() {
         deviceID = UIDevice.current.identifierForVendor!.uuidString
-        self.navigationItem.setHidesBackButton(true, animated:true);
-        ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league)
+        ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + lort + "/" + league)
         
         ref.observe(.value, with: { snapshot in
             
@@ -34,6 +34,8 @@ class PastScoresController: UITableViewController {
                 self.addToList()
             }
         })
+        
+        print(self.lort)
     }
     
     func addToList() {
@@ -78,20 +80,20 @@ class PastScoresController: UITableViewController {
         
         let cell = tableView.cellForRow(at: indexPath)
         let date = cell?.textLabel?.text ?? "01-01-2017"
-        let url = "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league + "/" + date + "/scores"
-        let url1 = "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league + "/" + date
+        let url = "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + lort + "/" + league + "/" + date + "/scores"
+        let url1 = "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + lort + "/" + league + "/" + date
         
-        var classification = ""
+        //var classification = ""
         var lanePattern = ""
         
         let ref1 = FIRDatabase.database().reference(fromURL: url1)
         
-        ref1.child("classification").observeSingleEvent(of: .value, with: { (snapshot) in
+        /*ref1.child("classification").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let item = snapshot.value as? String {
                 classification = item
             }
-        })
+        }) */
         
         ref1.child("pattern").observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -120,7 +122,7 @@ class PastScoresController: UITableViewController {
             }
             
             let message = "Your " + String(vars.scores.count) + " games were: "
-            self.sendAlert(classification + ": " + lanePattern, message: message + scoreString)
+            self.sendAlert(lanePattern, message: message + scoreString)
             
         })
     }

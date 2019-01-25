@@ -13,7 +13,7 @@ import FacebookLogin
 import FacebookCore
 import FBSDKCoreKit
 
-class StatsViewController: ViewController {
+class StatsViewController: LeagueViewController {
     
     var ref: FIRDatabaseReference!
     var ref1: FIRDatabaseReference!
@@ -28,6 +28,8 @@ class StatsViewController: ViewController {
     var type: String = ""
     var lanePattern: String = ""
     var league: String = ""
+    var lort: String = ""
+
     
     @IBOutlet weak var today_average: UILabel!
     @IBOutlet weak var today_series: UILabel!
@@ -37,51 +39,13 @@ class StatsViewController: ViewController {
     
     override func viewDidLoad() {
         ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/")
-        self.navigationItem.setHidesBackButton(true, animated:true);
         self.setUpData()
-        
-        /*var loginButton = LoginButton(readPermissions: [ .publicProfile, .email, .userFriends, .userPosts])
-        loginButton.center = view.center
-        view.addSubview(loginButton) */
-        
     }
     
-    @IBAction func ShareToFacebook(_ sender: Any) {
-        
-       /* let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email"], tokenString: "EAAFL44OUF4MBAOjx6CnWTCZBvbSy6vnOMM5hxEuKaxJMU6FWLIyPYCi26fLwXWrPrDNVD8qrEo5rZBZCd4Uw6j1N0ICYsoZBwKQ4zor1jOCO5xI1BUlcm7gcZC21TlVZB0HYeGg4SZCJaD7ZAGRlaSkfhi3oSBJT9d929GREXT3txMviJu3tF0UewynPr3ZBJIxRNxAcrvTSxDwZDZD", version: nil, httpMethod: "GET")
-        
-        req?.start(completionHandler: {(connection, results, error)  -> Void in
-            
-            print("-------------------------------------------------------------")
-            print(connection)
-            print(results)
-            print(error)
-            print("-------------------------------------------------------------")
-        })
-    
-            
-        let content = LinkShareContent(url: URL(fileURLWithPath: "https://developers.facebook.com"), quote: "HELLO!")
-        //try ShareDialog.show(from: myViewController, content: content)
-        
-        let sharer = GraphSharer(content: content)
-    
-        /* sharer.failsOnInvalidData = true
-        sharer.completion = { result in
-            // Handle share results
-        } */
-        
-        do {
-            print("SHARED!!!!!!!!!!!-----------------------------------------------------------------------------")
-            try sharer.share()
-        } catch (let error) {
-            print(error)
-        }
-        
- */
-    }
     func setUpData() {
         let deviceID = UIDevice.current.identifierForVendor!.uuidString
-        ref1 = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league)
+        print(lort)
+        ref1 = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + lort + "/" + league)
         ref1.observeSingleEvent(of: .value, with: { snapshot in
             
             if(snapshot.exists()) {
@@ -177,12 +141,14 @@ class StatsViewController: ViewController {
     
     func sendToFirebase() {
         let deviceID = UIDevice.current.identifierForVendor!.uuidString
-        ref.child(deviceID).child(league).child(date).child("scores").setValue(scores)
-        ref.child(deviceID).child(league).child(date).child("average").setValue(average)
-        ref.child(deviceID).child(league).child(date).child("3gameSeries").setValue(gameSeriesInt)
-        ref.child(deviceID).child(league).child(date).child("highGame").setValue(findHighGame())
-        ref.child(deviceID).child(league).child(date).child("classification").setValue("League")
-        ref.child(deviceID).child(league).child(date).child("pattern").setValue(lanePattern)
+        print("SENDING TO FIREBASE")
+        print(lort)
+        ref.child(deviceID).child(lort).child(league).child(date).child("scores").setValue(scores)
+        ref.child(deviceID).child(lort).child(league).child(date).child("average").setValue(average)
+        ref.child(deviceID).child(lort).child(league).child(date).child("3gameSeries").setValue(gameSeriesInt)
+        ref.child(deviceID).child(lort).child(league).child(date).child("highGame").setValue(findHighGame())
+        ref.child(deviceID).child(lort).child(league).child(date).child("classification").setValue("League")
+        ref.child(deviceID).child(lort).child(league).child(date).child("pattern").setValue(lanePattern)
     }
     
     func sendAlert(_ title: String, message: String) {

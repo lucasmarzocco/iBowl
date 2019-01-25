@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class LeagueViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var picker: UIPickerView!
     var pickerData: [String] = [String]()
@@ -21,7 +21,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         let deviceID = UIDevice.current.identifierForVendor!.uuidString
         
-        ref_leagues = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID)
+        ref_leagues = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/Leagues")
         ref_leagues.observe(.value, with: { snapshot in
             
             if(snapshot.exists()) {
@@ -35,12 +35,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     self.pickerData.append(item)
                 }
             }
+            
+            self.pickerData = Array(Set(self.pickerData))
         })
         
         self.picker.dataSource = self
         self.picker.delegate = self
-        
-        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     @IBAction func add_league(_ sender: Any) {
@@ -82,9 +82,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             case "addGame":
                 let dest: NewScoreViewController = segue.destination as! NewScoreViewController
                 dest.league = pickerData[picker.selectedRow(inComponent: 0)]
+                dest.lort = "Leagues"
             case "pastScores":
                 let dest: PastScoresController = segue.destination as! PastScoresController
                 dest.league = pickerData[picker.selectedRow(inComponent: 0)]
+                dest.lort = "Leagues"
             default:
                 return
             }

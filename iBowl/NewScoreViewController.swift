@@ -17,28 +17,27 @@ class NewScoreViewController: UIViewController {
     var wordField1: UITextField?
     var wordField2: UITextField?
     var wordField3: UITextField?
-    @IBOutlet weak var type: UITextField!
     @IBOutlet weak var lanePattern: UITextField!
+    @IBOutlet weak var type: UILabel!
     var league = ""
     var scores: [Int] = []
     var info: String = ""
     var average: Int = 0
+    var lort: String = ""
     
     override func viewDidLoad() {
         datePicker.setValue(UIColor.red, forKeyPath: "textColor")
+        type.text = league
         print("Editing info for league: " + self.league)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewScoreViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        self.type.text = league
         
         let deviceID = UIDevice.current.identifierForVendor!.uuidString
-        print(deviceID)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
         let date = dateFormatter.string(from: datePicker.date)
         print(league)
         print(date)
-        print(deviceID)
         /**let ref = FIRDatabase.database().reference(fromURL: "https://ibowl-c7e9e.firebaseio.com/" + deviceID + "/" + league + "/" + date)
         
         if ref =! nil {
@@ -138,10 +137,6 @@ class NewScoreViewController: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if self.type.text! == "" {
-            sendAlert("ERROR", message: "Game type empty!")
-            return false
-        }
         if self.lanePattern.text! == "" {
             sendAlert("ERROR", message: "Pattern empty!")
             return false
@@ -165,6 +160,8 @@ class NewScoreViewController: UIViewController {
         dest.type = self.type.text!
         dest.lanePattern = self.lanePattern.text!
         dest.league = self.league
+        print("WHAT THE FUCK IS THE LORT???" + self.lort)
+        dest.lort = self.lort
     }
     
     func sendAlert(_ title: String, message: String) {

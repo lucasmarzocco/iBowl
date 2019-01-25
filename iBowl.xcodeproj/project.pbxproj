@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		01455CC81D152EA500A58378 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01455CC71D152EA500A58378 /* AppDelegate.swift */; };
-		01455CCA1D152EA500A58378 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01455CC91D152EA500A58378 /* ViewController.swift */; };
+		01455CCA1D152EA500A58378 /* LeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01455CC91D152EA500A58378 /* LeagueViewController.swift */; };
 		01455CCD1D152EA500A58378 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01455CCB1D152EA500A58378 /* Main.storyboard */; };
 		01455CCF1D152EA500A58378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01455CCE1D152EA500A58378 /* Assets.xcassets */; };
 		01455CD21D152EA500A58378 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01455CD01D152EA500A58378 /* LaunchScreen.storyboard */; };
 		01455CDA1D153A7300A58378 /* NewScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01455CD91D153A7300A58378 /* NewScoreViewController.swift */; };
 		014782471D24E37F00D4397D /* PastScoresController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014782461D24E37F00D4397D /* PastScoresController.swift */; };
 		014B70231D74F6190049129E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 014B70221D74F6190049129E /* GoogleService-Info.plist */; };
+		014F3D3621FA7F2300D44657 /* TournamentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014F3D3521FA7F2300D44657 /* TournamentViewController.swift */; };
 		015744821EEB863700B4F994 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015744811EEB863700B4F994 /* Score.swift */; };
 		01A53D1B1D1B0BAA00B2C000 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A53D1A1D1B0BAA00B2C000 /* StatsViewController.swift */; };
 		1FB6B36A20C5F17700A3BA1B /* CalculateScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6B36920C5F17600A3BA1B /* CalculateScores.swift */; };
@@ -24,13 +25,14 @@
 /* Begin PBXFileReference section */
 		01455CC41D152EA500A58378 /* iBowl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBowl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01455CC71D152EA500A58378 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01455CC91D152EA500A58378 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01455CC91D152EA500A58378 /* LeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueViewController.swift; sourceTree = "<group>"; };
 		01455CCC1D152EA500A58378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01455CCE1D152EA500A58378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01455CD11D152EA500A58378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01455CD91D153A7300A58378 /* NewScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScoreViewController.swift; sourceTree = "<group>"; };
 		014782461D24E37F00D4397D /* PastScoresController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastScoresController.swift; sourceTree = "<group>"; };
 		014B70221D74F6190049129E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		014F3D3521FA7F2300D44657 /* TournamentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentViewController.swift; sourceTree = "<group>"; };
 		015744811EEB863700B4F994 /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		01A53D1A1D1B0BAA00B2C000 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		1FB6B36920C5F17600A3BA1B /* CalculateScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateScores.swift; sourceTree = "<group>"; };
@@ -75,7 +77,8 @@
 			children = (
 				014B70221D74F6190049129E /* GoogleService-Info.plist */,
 				01455CC71D152EA500A58378 /* AppDelegate.swift */,
-				01455CC91D152EA500A58378 /* ViewController.swift */,
+				01455CC91D152EA500A58378 /* LeagueViewController.swift */,
+				014F3D3521FA7F2300D44657 /* TournamentViewController.swift */,
 				01455CCB1D152EA500A58378 /* Main.storyboard */,
 				1FB6B36920C5F17600A3BA1B /* CalculateScores.swift */,
 				014782461D24E37F00D4397D /* PastScoresController.swift */,
@@ -243,9 +246,10 @@
 			files = (
 				01455CDA1D153A7300A58378 /* NewScoreViewController.swift in Sources */,
 				014782471D24E37F00D4397D /* PastScoresController.swift in Sources */,
-				01455CCA1D152EA500A58378 /* ViewController.swift in Sources */,
+				01455CCA1D152EA500A58378 /* LeagueViewController.swift in Sources */,
 				01A53D1B1D1B0BAA00B2C000 /* StatsViewController.swift in Sources */,
 				015744821EEB863700B4F994 /* Score.swift in Sources */,
+				014F3D3621FA7F2300D44657 /* TournamentViewController.swift in Sources */,
 				1FB6B36A20C5F17700A3BA1B /* CalculateScores.swift in Sources */,
 				01455CC81D152EA500A58378 /* AppDelegate.swift in Sources */,
 			);
